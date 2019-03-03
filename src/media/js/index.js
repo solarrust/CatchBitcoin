@@ -14,9 +14,14 @@ global.ProjectName = new function ProjectName() { // eslint-disable-line
 		Callback: require('./classes/Callback')
 	};
 
-	this.helpers = {};
+	this.helpers = {
+		ScrollHelper: require('./helpers/ScrollHelper')
+	};
+
 	this.modules = {
 		SlickSliders: require('./modules/SlickSliders'),
+		Popups: require('./modules/Popups'),
+		Validations: require('./modules/Validations'),
 	};
 
 	// Startup

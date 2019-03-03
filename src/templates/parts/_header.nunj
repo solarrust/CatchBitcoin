@@ -2,7 +2,7 @@
 	<div class="header__container container">
 		<img src="./media/img/logo@2x.png" alt="Logo Catch Bitcoin" class="logo header__logo">
 		<nav class="header__menu menu">
-			<button class="btn _get" data-access>Get access</button>
+			<button class="btn _get" data-popup-opener="contact-form">Get access</button>
 		</nav>
 	</div>
 	<div class="header__container container">

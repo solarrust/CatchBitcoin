@@ -4,4 +4,5 @@
 
 {% block content %}
 	{% include '../parts/_header.nunj' %}
+	{% include '../parts/_popup.nunj' %}
 {% endblock content %}
