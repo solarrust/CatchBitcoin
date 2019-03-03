@@ -2,6 +2,7 @@ import { TweenMax } from 'gsap';
 global.TweenMax = TweenMax;
 global.$ = global.jQuery = require('jquery');
 require('./utils/jqExtensions');
+require('slick-carousel');
 
 // prettier-ignore
 global.ProjectName = new function ProjectName() { // eslint-disable-line
@@ -14,7 +15,9 @@ global.ProjectName = new function ProjectName() { // eslint-disable-line
 	};
 
 	this.helpers = {};
-	this.modules = {};
+	this.modules = {
+		SlickSliders: require('./modules/SlickSliders'),
+	};
 
 	// Startup
 	$(() => {
