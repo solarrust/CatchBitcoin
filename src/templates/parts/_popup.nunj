@@ -11,7 +11,7 @@
 						</nav>
 					</div>
 					<div class="popup__form">
-						<form action="http://epic.spb.ru/dandelion/form-sender.php" method="POST" class="contact-form" data-form-validation id="contact-form">
+						<form action="http://epic.spb.ru/catch/form-sender.php" method="POST" class="contact-form" data-form-validation id="contact-form">
 							<div class="contact-form__title title-sm" data-form-group data-form-main>
 								Please fill in all fields and our manager will contact you as soon as possible.
 								Please fill in all fields and our manager will contact you as soon as possible.
