@@ -20,6 +20,16 @@ const OPTIONS_BY_TYPE = {
 		slidesToShow: 1,
 		dots: true,
 		arrows: true,
+		responsive: [
+			{
+				breakpoint: 900,
+				settings: {
+					autoplay: false,
+					dots: false,
+					arrows: false,
+				},
+			},
+		],
 	},
 };
 

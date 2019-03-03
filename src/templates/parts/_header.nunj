@@ -8,7 +8,7 @@
 	<div class="header__container container">
 		<div class="header__content">
 			<h1 class="title header__title">
-				Buy and Sell
+				Buy and&nbsp;Sell
 				<span class="_accent">Bitcoins</span>
 			</h1>
 			<p class="description header__description">Best Price. No Limits. Zero Risks.</p>
