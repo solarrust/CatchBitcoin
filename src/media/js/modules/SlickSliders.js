@@ -24,7 +24,6 @@ const OPTIONS_BY_TYPE = {
 			{
 				breakpoint: 900,
 				settings: {
-					autoplay: false,
 					dots: false,
 					arrows: false,
 				},
