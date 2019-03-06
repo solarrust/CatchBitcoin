@@ -13,9 +13,7 @@
 					<div class="popup__form">
 						<form action="http://epic.spb.ru/catch/form-sender.php" method="POST" class="contact-form" data-form-validation id="contact-form">
 							<div class="contact-form__title title-sm" data-form-group data-form-main>
-								Please fill in all fields and our manager will contact you as soon as possible.
-								Please fill in all fields and our manager will contact you as soon as possible.
-								Please fill in all fields and our manager will contact you as soon as possible.
+								Please fill out the contact form and our manager will contact you.
 							</div>
 							<div class="contact-form__content" data-form-group data-form-main>
 								<label class="contact-form__label label" data-form-group data-form-main>
@@ -28,13 +26,15 @@
 									<input type="email" class="contact-form__input" placeholder="Your e-mail" name="email" data-email data-required data-input>
 									<div class="contact-form__error">Please enter a real email</div>
 								</label>
-								<label class="contact-form__label label" data-form-group data-form-main>
-									<span class="label__text">Phone</span>
-									<input type="phone" class="contact-form__input" placeholder="Your phone number" name="phone" data-phone data-input>
-									<div class="contact-form__error">It is a required field</div>
+								<label class="contact-form__label label" data-form-group data-form-main hidden>
+									<input type="text" class="country-code-field contact-form__input" name="code" data-code style="display: none" aria-hidden="true" hidden data-input>
 								</label>
 								<label class="contact-form__label label" data-form-group data-form-main>
-									<input type="checkbox" data-required data-input data-check>
+									<span class="label__text">Phone</span>
+									<input type="tel" id="phone" class="contact-form__input" placeholder="" name="phone" data-phone data-input>
+								</label>
+								<label class="contact-form__label label" data-form-group data-form-main>
+									<input type="checkbox" data-input data-check>
 									<span class="label__text">I'm not a robot</span>
 									<div class="contact-form__error">It is a required field</div>
 								</label>

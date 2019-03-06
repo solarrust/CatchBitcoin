@@ -68,6 +68,8 @@
 	"devDependencies": {
 		"husky": "^0.14.3",
 		"inputmask": "^4.0.6",
+		"intl-tel-input": "^15.0.1",
+		"jquery-mask-plugin": "^1.14.15",
 		"pretty-quick": "^1.5.1"
 	}
 }

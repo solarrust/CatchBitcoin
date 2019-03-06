@@ -2,22 +2,64 @@ const env = require('../utils/ENV');
 // const Connector = require('../helpers/Connector');
 const ScrollHelper = require('../helpers/ScrollHelper');
 const Inputmask = require('inputmask');
+const intlTelInput = require('intl-tel-input');
+const utils = require('intl-tel-input/build/js/utils.js');
+import { intlTelInputUtils } from 'intl-tel-input/build/js/utils.js';
 
 function Validations() {
 	if (!env.isMobile) {
-		const $phone = $('input[type="phone"]');
-		const phone = new Inputmask({ mask: '+9{1,3} (999) 999-99-99', greedy: true });
-		phone.mask($phone);
+		let countryCode;
+		let countryData = window.intlTelInputGlobals.getCountryData();
+		let $phone = document.querySelector('#phone');
+		for (let i = 0; i < countryData.length; i++) {
+			let country = countryData[i];
+			country.name = country.name.replace(/.+\((.+)\)/, '$1');
+		}
+
+		// eslint-disable-next-line
+		let iti = intlTelInput($phone, {
+			utilsScript: utils,
+			initialCountry: 'auto',
+			geoIpLookup: function(success, failure) {
+				$.get('https://ipinfo.io', function() {}, 'jsonp').always(function(resp) {
+					var countryCode = resp && resp.country ? resp.country : '';
+					success(countryCode);
+				});
+			},
+			preferredCountries: ['us', 'ru', 'th'],
+			autoPlaceholder: 'aggressive',
+			customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+				return selectedCountryPlaceholder;
+			},
+			separateDialCode: true,
+		});
+
+		$($phone).on('keypress click', () => {
+			let mask = $($phone).attr('placeholder');
+
+			if (mask !== 'undefined') {
+				mask = mask.replace(/[0-9]/g, '9');
+			}
+
+			let telMask = new Inputmask({ mask: mask });
+			telMask.mask($phone);
+
+			countryCode = $('.selected-dial-code').text();
+
+			$('.country-code-field').val(countryCode);
+		});
 	}
 
 	this.$allInput = $('input[data-input]');
 
 	// this.$parent = '[data-form-group]';
-	this.$allInput.on('focusout', e => {
+	this.$allInput.on('focusout change', e => {
 		const $this = $(e.currentTarget);
 		const $form = $this.closest('[data-form-validation]');
+		const $check = $('input[type="checkbox"]');
+		var checked = $check.is(':checked');
 
-		const willSubmit = this.test($form);
+		const willSubmit = this.test($form, checked);
 		if (willSubmit) {
 			$form.find('[data-form-submit]').attr('disabled', false);
 		} else {
@@ -34,7 +76,9 @@ function Validations() {
 	$('form[data-form-validation]').on('submit', e => {
 		e.preventDefault();
 		const $form = $(e.currentTarget);
-		const willSubmit = this.test($form);
+		const $check = $('input[type="checkbox"]');
+		var checked = $check.is(':checked');
+		const willSubmit = this.test($form, checked);
 
 		if (willSubmit) {
 			//const $data = $form.serialize();
@@ -115,28 +159,22 @@ Validations.prototype = {
 				return true;
 			}
 		}
-
-		var isRobot = $('[data-check]');
-		var testRobot = this.isRobot(isRobot.is(':checked'));
-
-		if (!testRobot) {
-			!lightMode && $input.parent('[data-form-group]').addClass('_error');
-			return false;
-		} else {
-			!lightMode && $input.parent('[data-form-group]').addClass('_valid');
-			return true;
-		}
 	},
 
-	test: function($form, lightMode) {
+	test: function($form, checked, lightMode) {
 		const $inputs = $form.find('input,textarea'); // .outline( false );
+
 		let willSubmit = true;
 		const totalInputs = $inputs.length;
-		for (let k = 0; k < totalInputs; k++) {
-			const inputCheck = this.testInput($inputs.eq(k), lightMode);
-			if (inputCheck === false) {
-				willSubmit = false;
+		if (checked === true) {
+			for (let k = 0; k < totalInputs; k++) {
+				const inputCheck = this.testInput($inputs.eq(k), lightMode);
+				if (inputCheck === false) {
+					willSubmit = false;
+				}
 			}
+		} else {
+			willSubmit = false;
 		}
 
 		return willSubmit;

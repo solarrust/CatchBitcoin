@@ -91,9 +91,7 @@
 						<h3 class="slide__name">Agents</h3>
 						<h2 class="slide__title">Special, mutually beneficial arrangements for long-term partnerships</h2>
 						<div class="slide__text">
-							<p>Become an&nbsp;official agent (partner) and get the best business terms for your clients. Average document processing time X&nbsp;hours.
-								Best price. No&nbsp;limits. Zero risks.</p>
-							<p>Let&nbsp;us know what we&nbsp;can do&nbsp;for you right now.</p>
+							<p>Become an official agent (partner) and get the best business terms for your clients. Usually, the processing time of documents takes only a few hours.</p>
 						</div>
 					</div>
 				</div>
@@ -104,8 +102,8 @@
 		<div class="contact-us">
 			<div class="contact-us__group">
 				<svg><use xlink:href="#icon-envelope"></use></svg>Feel free to contact us: <br>
-				<a href="mailto:help@catchbitcoin.com" class="contact-us__link link">
-					help@catchbitcoin.com
+				<a href="mailto:info@catchbitcoin.io" class="contact-us__link link">
+					info@catchbitcoin.io
 				</a>
 			</div>
 		</div>
